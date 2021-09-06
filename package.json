@@ -1,0 +1,35 @@
+{
+  "name": "TweenPages",
+  "description": "Build complex animated page transitions with GSAP and Next.js",
+  "version": "0.1.0",
+  "scripts": {
+    "cypress": "cypress open",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "format-watch": "npm run format && onchange \"**/*.{js,jsx,json,md}\" -- prettier --write {{changed}}",
+    "test": "cypress run",
+    "deploy": "npm run test && git push origin main && vercel --prod"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.15.3",
+    "@mdx-js/loader": "^1.6.22",
+    "@next/mdx": "^11.1.2",
+    "cypress": "^8.3.1",
+    "gsap": "^3.7.1",
+    "next": "^11.1.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "theme-ui": "^0.11.1"
+  },
+  "devDependencies": {
+    "onchange": "^7.1.0",
+    "prettier": "^2.2.0"
+  },
+  "resolutions": {
+    "@babel/runtime": "^7.12.5"
+  },
+  "repository": "https://github.com/johnpolacek/TweenPages",
+  "license": "MIT-0"
+}
