@@ -1,23 +1,37 @@
 import { Flex, Box, Text } from "theme-ui"
 import FlyInOutRight from "../animation/FlyInOutRight"
+import HomeAnimation from "../animation/HomeAnimation"
 
 const Home = (props) => (
   <Flex
     id="home"
     sx={{
-      p: [3, 4],
+      p: [0, 4],
       flex: 1,
       color: "white",
+      flexWrap: "wrap",
     }}
   >
-    <Flex sx={{ width: "50%", p: [0, 4] }}>
+    <Flex
+      sx={{
+        width: ["100%", "100%", "100%", "45%", "50%"],
+        py: [0, 4],
+        px: 4,
+        alignItems: "center",
+      }}
+    >
       <FlyInOutRight>
-        <Text as="h2" sx={{ fontSize: 5, fontWeight: 500, pt: 5 }}>
+        <Text
+          as="h2"
+          sx={{ fontSize: [3, 4, 5], fontWeight: 500, pb: [0, 0, 0, 5] }}
+        >
           Build complex animated page transitions with GSAP and Next.js.
         </Text>
       </FlyInOutRight>
     </Flex>
-    <Box sx={{ width: "50%" }}>Image will go here...</Box>
+    <Box sx={{ width: ["100%", "100%", "100%", "55%", "50%"] }}>
+      <HomeAnimation />
+    </Box>
   </Flex>
 )
 
