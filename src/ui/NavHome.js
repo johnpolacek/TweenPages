@@ -1,4 +1,4 @@
-import { Text } from "theme-ui"
+import { Text, Image } from "theme-ui"
 import NavLink from "./NavLink"
 
 const NavHome = (props) => (
@@ -21,8 +21,11 @@ const NavHome = (props) => (
           color: "primary",
         }}
       >
-        <Text as="span" sx={{ letterSpacing: "2px", display: "inline-block" }}>
-          &lt;/&gt;
+        <Text as="span" sx={{ display: "inline-block" }}>
+          <Image
+            src="/img/double-right.svg"
+            sx={{ height: "20px", position: "relative", top: "3px" }}
+          />
         </Text>
       </Text>
       <Text as="span">TweenPages</Text>
