@@ -4,16 +4,27 @@ import { Box } from "theme-ui"
 import useIsomorphicLayoutEffect from "./useIsomorphicLayoutEffect"
 import { TransitionContext } from "../context/TransitionContext"
 
-const AnimateInOut = ({ children, as, from, to, durationIn, durationOut }) => {
+const AnimateInOut = ({
+  children,
+  as,
+  from,
+  to,
+  durationIn,
+  durationOut,
+  delay,
+}) => {
   const { timeline } = useContext(TransitionContext)
   const el = useRef()
 
   useIsomorphicLayoutEffect(() => {
+    // intro animation
     gsap.to(el.current, {
       ...to,
+      delay: delay || 0,
       duration: durationIn,
     })
 
+    // outro animation
     timeline.add(
       gsap.to(el.current, {
         ...from,

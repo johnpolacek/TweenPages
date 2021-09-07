@@ -8,13 +8,17 @@ export default function TransitionLayout({ children }) {
   const { timeline, background } = useContext(TransitionContext)
   const el = useRef()
 
-  console.log("TransitionLayout background", background)
-
   useIsomorphicLayoutEffect(() => {
     if (children !== displayChildren) {
-      timeline.play().then(() => {
+      if (timeline.duration() === 0) {
         setDisplayChildren(children)
-      })
+      } else {
+        timeline.play().then(() => {
+          // outro complete so reset to an empty paused timeline
+          timeline.seek(0).pause().clear()
+          setDisplayChildren(children)
+        })
+      }
     }
   }, [children])
 

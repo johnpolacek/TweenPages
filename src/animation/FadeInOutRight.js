@@ -5,11 +5,12 @@ import useIsomorphicLayoutEffect from "./useIsomorphicLayoutEffect"
 import { TransitionContext } from "../context/TransitionContext"
 import AnimateInOut from "./AnimateInOut"
 
-const FlyInOutRight = ({ children }) => (
+const FadeInOutRight = ({ children, delay }) => (
   <AnimateInOut
     as="div"
     durationIn={2}
     durationOut={0.25}
+    delay={delay}
     from={{
       transform: "translate(100px, 0px)",
       opacity: 0,
@@ -26,4 +27,4 @@ const FlyInOutRight = ({ children }) => (
   </AnimateInOut>
 )
 
-export default FlyInOutRight
+export default FadeInOutRight

@@ -1,5 +1,5 @@
 import { Flex, Box, Text } from "theme-ui"
-import FlyInOutRight from "../animation/FlyInOutRight"
+import FadeInOutRight from "../animation/FadeInOutRight"
 import HomeAnimation from "../animation/HomeAnimation"
 
 const Home = (props) => (
@@ -20,14 +20,14 @@ const Home = (props) => (
         alignItems: "center",
       }}
     >
-      <FlyInOutRight>
+      <FadeInOutRight>
         <Text
           as="h2"
           sx={{ fontSize: [3, 4, 5], fontWeight: 500, pb: [0, 0, 0, 5] }}
         >
           Build complex animated page transitions with GSAP and Next.js.
         </Text>
-      </FlyInOutRight>
+      </FadeInOutRight>
     </Flex>
     <Box sx={{ width: ["100%", "100%", "100%", "55%", "50%"] }}>
       <HomeAnimation />
