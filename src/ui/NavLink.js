@@ -1,15 +1,13 @@
-/** @jsxRuntime classic */
-/** @jsx jsx */
-import { jsx } from "theme-ui"
 import PropTypes from "prop-types"
 import Link from "next/link"
+import { Link as A } from "theme-ui"
 import { useRouter } from "next/router"
 
 const NavLink = (props) => {
   const router = useRouter()
   return (
     <Link href={props.href}>
-      <a
+      <A
         sx={{
           py: [2, 3],
           px: 3,
