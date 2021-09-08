@@ -8,7 +8,7 @@ const Page1 = () => (
     twitter="johnpolacek"
     imageUrl="https://next-project-starter.vercel.app/project-logo.png"
     imageAlt="Next Project Starter Logo"
-    background="linear-gradient(90deg,purple,black)"
+    background="linear-gradient(90deg,green,black)"
   >
     <div>page</div>
   </Wrapper>
