@@ -2,7 +2,7 @@ import { Flex, Box, Text } from "theme-ui"
 import FadeInOutRight from "../animation/FadeInOutRight"
 import HomeAnimation from "../animation/HomeAnimation"
 
-const Home = (props) => (
+const Home = () => (
   <Flex
     id="home"
     sx={{
