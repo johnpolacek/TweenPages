@@ -10,7 +10,7 @@ const Three = () => (
       flexWrap: "wrap",
       flexDirection: "column",
       alignItems: "center",
-      justifyContent: "center"
+      justifyContent: "center",
     }}
   >
     <Text>Created</Text>
