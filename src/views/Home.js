@@ -22,8 +22,14 @@ const Home = () => (
     >
       <FadeInOutRight>
         <Text
+          as="h1"
+          sx={{ fontSize: 9, fontWeight: 100, pb: 4 }}
+        >
+          TweenPages
+        </Text>
+        <Text
           as="h2"
-          sx={{ fontSize: [3, 4, 5], fontWeight: 500, pb: [0, 0, 0, 5] }}
+          sx={{ fontSize: 4, fontWeight: 500, pb: [0, 0, 0, 5] }}
         >
           Build complex animated page transitions with GSAP and Next.js.
         </Text>
