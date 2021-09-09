@@ -23,6 +23,7 @@ const Nav = (props) => (
       <NavLink href="/one">One</NavLink>
       <NavLink href="/two">Two</NavLink>
       <NavLink href="/three">Three</NavLink>
+      <NavLink href="/docs">Docs</NavLink>
     </Box>
   </Box>
 )

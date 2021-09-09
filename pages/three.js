@@ -3,12 +3,12 @@ import Three from "../src/views/Three"
 
 const Page3 = () => (
   <Wrapper
-    url="https://next-project-starter.vercel.app/one"
-    title="Next Project Starter Docs | Animated Page Transition 1"
-    description="Next Project Starter Docs for building Web Apps with Next.js, Theme UI, Cypress"
+    url="https://tweenpages.vercel.app/three"
+    title="TweenPages | Transition 3"
+    description="Demo of TweenPages with a complex transition to page number three"
     twitter="johnpolacek"
-    imageUrl="https://next-project-starter.vercel.app/project-logo.png"
-    imageAlt="Next Project Starter Logo"
+    imageUrl="https://tweenpages.vercel.app/project-logo.png"
+    imageAlt="TweenPages Logo"
     background="linear-gradient(90deg,red,black)"
   >
     <Three />
