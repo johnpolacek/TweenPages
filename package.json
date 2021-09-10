@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.15.3",
+    "@gsap/business": "^3.7.1",
     "@mdx-js/loader": "^1.6.22",
     "@next/mdx": "^11.1.2",
     "cypress": "^8.3.1",
