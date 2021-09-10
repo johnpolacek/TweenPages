@@ -44,26 +44,28 @@ const Home = () => (
         </Box>
         <Flex>
           <ScaleInOut as="div" delay={4}>
-            <Button
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                mr: 4,
-                fontSize: 3,
-                fontWeight: 400,
-                px: 4,
-                py: 3,
-                bg: "royalblue",
-              }}
-            >
-              <Image
-                width="40"
-                height="40"
-                sx={{ ml: -2, mr: 3, opacity: 0.8 }}
-                src="/img/github-icon.svg"
-              />
-              View on Github
-            </Button>
+            <A sx={{textDecoration: "none"}} href="https://github.com/johnpolacek/TweenPages">
+              <Button
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  mr: 4,
+                  fontSize: 3,
+                  fontWeight: 400,
+                  px: 4,
+                  py: 3,
+                  bg: "royalblue",
+                }}
+              >
+                <Image
+                  width="40"
+                  height="40"
+                  sx={{ ml: -2, mr: 3, opacity: 0.8 }}
+                  src="/img/github-icon.svg"
+                />
+                View on Github
+              </Button>
+            </A>
           </ScaleInOut>
           <ScaleInOut as="div" delay={4.1}>
             <Link href="/one" passHref={true}>

@@ -6,6 +6,8 @@ import useIsomorphicLayoutEffect from "./useIsomorphicLayoutEffect"
 import { TransitionContext } from "../context/TransitionContext"
 import { randomNumber } from "./util"
 
+gsap.registerPlugin(SplitText)
+
 const ImplodeExplodeInOut = ({
   children,
   target,
