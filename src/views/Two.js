@@ -27,7 +27,7 @@ const Two = () => (
       </Text>
     </Box>
     <Box sx={{ width: "50%" }}>
-      <Text>About building cool things...</Text>
+      <Text>So much room for activities.</Text>
     </Box>
   </Flex>
 )

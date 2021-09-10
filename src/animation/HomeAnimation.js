@@ -15,7 +15,7 @@ const HomeAnimation = () => {
     // ref is an object with a current property that holds the DOM element
     gsap.to(greensockRef.current, {
       opacity: 1,
-      delay: 2,
+      delay: 3,
       duration: 1,
       y: 0,
       ease: "elastic.out",
@@ -24,8 +24,8 @@ const HomeAnimation = () => {
     gsap.to(plusRef.current, {
       opacity: 1,
       rotationY: -720,
-      delay: 2.5,
-      duration: 1,
+      delay: 3,
+      duration: 2,
       y: 0,
       transformOrigin: "50% 50%",
       ease: "power4.out",
@@ -33,15 +33,13 @@ const HomeAnimation = () => {
 
     gsap.to(nextJsRef.current, {
       opacity: 1,
-      delay: 3,
+      delay: 3.2,
       duration: 1,
       y: 0,
       ease: "bounce.out",
     })
 
     // outro animation
-    console.log("add outro")
-
     timeline.add(
       gsap.to(greensockRef.current, {
         y: -200,

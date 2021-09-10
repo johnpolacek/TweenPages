@@ -12,12 +12,16 @@ const AnimateInOut = ({
   durationIn,
   durationOut,
   delay,
+  set,
 }) => {
   const { timeline } = useContext(TransitionContext)
   const el = useRef()
 
   useIsomorphicLayoutEffect(() => {
     // intro animation
+    if (set) {
+      gsap.set(el.current, { ...set })
+    }
     gsap.to(el.current, {
       ...to,
       delay: delay || 0,
@@ -29,7 +33,8 @@ const AnimateInOut = ({
       gsap.to(el.current, {
         ...from,
         duration: durationOut,
-      })
+      }),
+      0
     )
   }, [])
 

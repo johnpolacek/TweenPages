@@ -2,7 +2,6 @@ import React, { useRef, useContext } from "react"
 import { gsap } from "gsap"
 import { Box } from "theme-ui"
 import useIsomorphicLayoutEffect from "./useIsomorphicLayoutEffect"
-import { TransitionContext } from "../context/TransitionContext"
 import AnimateInOut from "./AnimateInOut"
 
 const FadeInOutRight = ({ children, delay }) => (
