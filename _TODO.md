@@ -1,8 +1,6 @@
 # TweenPages TODOs
 
 - Navigation intro animation
-- Footer intro animation
-- View on Github button
 - Bring the Action button
 	- Make It Happen
 	- Let’s Get Crazy

@@ -2,6 +2,12 @@
 
 ### Animating Complex Next.js Page Transitions with GSAP
 
+---
+
+*Work in progress!*
+
+---
+
 One of the great promises of Next.js is that you get that awesome single page app experience while also keeping the performance and architectural benefits of serverside rendering and routing.
 
 There are some nice examples out there of rendering page layouts with a static header/nav/footer and a main content area that rehydrates with new content as the user navigates around the site. There are also some examples of a simple fade in and out transition of those page updates.
