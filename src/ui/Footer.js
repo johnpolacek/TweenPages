@@ -15,7 +15,7 @@ const Footer = (props) => (
     </Box>
     <Box as="span" sx={{ mx: 3, display: "inline-block" }}>
       Open sourced on{" "}
-      <a href="https://github.com/johnpolacek/next-project-starter">Github</a>
+      <a href="https://github.com/johnpolacek/TweenPages">Github</a>
     </Box>
     <Box as="span" sx={{ mx: 3, display: "inline-block" }}>
       Follow <a href="https://twitter.com/johnpolacek">@johnpolacek</a>
