@@ -44,7 +44,10 @@ const Home = () => (
         </Box>
         <Flex>
           <ScaleInOut as="div" delay={4}>
-            <A sx={{textDecoration: "none"}} href="https://github.com/johnpolacek/TweenPages">
+            <A
+              sx={{ textDecoration: "none" }}
+              href="https://github.com/johnpolacek/TweenPages"
+            >
               <Button
                 sx={{
                   display: "flex",

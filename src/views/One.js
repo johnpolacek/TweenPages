@@ -1,4 +1,6 @@
 import { Flex, Box, Text } from "theme-ui"
+import AnimateAroundCircularPath from "../animation/AnimateAroundCircularPath"
+import ScaleInOut from "../animation/ScaleInOut"
 
 const One = () => (
   <Flex
@@ -13,12 +15,34 @@ const One = () => (
       justifyContent: "center",
     }}
   >
-    <Text as="h3" sx={{ fontSize: 6, fontWeight: 200, py: 4, pr: 6, mr: 6 }}>
-      Server Rendered Web Pages
-    </Text>
-    <Text as="h3" sx={{ fontSize: 6, fontWeight: 200, py: 4, pl: 6, ml: 6 }}>
-      App Style Page Transitions
-    </Text>
+    <AnimateAroundCircularPath>
+      <ScaleInOut duration={3} ease="power4.out" scale={1.2} x={-180}>
+        <Text
+          as="h3"
+          sx={{
+            fontSize: 6,
+            fontWeight: 200,
+            width: "300px",
+            textAlign: "center",
+          }}
+        >
+          Server Rendered Web Pages
+        </Text>
+      </ScaleInOut>
+      <ScaleInOut duration={3} ease="power4.out" scale={1.2} x={180}>
+        <Text
+          as="h3"
+          sx={{
+            fontSize: 6,
+            fontWeight: 200,
+            width: "300px",
+            textAlign: "center",
+          }}
+        >
+          App Style Page Transitions
+        </Text>
+      </ScaleInOut>
+    </AnimateAroundCircularPath>
   </Flex>
 )
 
