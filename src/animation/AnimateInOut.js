@@ -13,6 +13,7 @@ const AnimateInOut = ({
   durationOut,
   delay,
   set,
+  skipOutro,
 }) => {
   const { timeline } = useContext(TransitionContext)
   const el = useRef()
@@ -29,13 +30,15 @@ const AnimateInOut = ({
     })
 
     // outro animation
-    timeline.add(
-      gsap.to(el.current, {
-        ...from,
-        duration: durationOut,
-      }),
-      0
-    )
+    if (!skipOutro) {
+      timeline.add(
+        gsap.to(el.current, {
+          ...from,
+          duration: durationOut,
+        }),
+        0
+      )
+    }
   }, [])
 
   return (
@@ -45,4 +48,4 @@ const AnimateInOut = ({
   )
 }
 
-export default AnimateInOut
+export default React.memo(AnimateInOut)

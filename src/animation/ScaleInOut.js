@@ -4,7 +4,17 @@ import useIsomorphicLayoutEffect from "./useIsomorphicLayoutEffect"
 import { TransitionContext } from "../context/TransitionContext"
 import AnimateInOut from "./AnimateInOut"
 
-const ScaleInOut = ({ children, delay, as, scale, ease, duration, x, y }) => {
+const ScaleInOut = ({
+  children,
+  delay,
+  as,
+  scale,
+  ease,
+  duration,
+  x,
+  y,
+  skipOutro,
+}) => {
   const s = scale || 0.01
   const e = ease || "elastic.out"
   const d = duration || 1
@@ -15,6 +25,7 @@ const ScaleInOut = ({ children, delay, as, scale, ease, duration, x, y }) => {
       durationIn={d}
       durationOut={d / 4}
       delay={delay}
+      skipOutro={skipOutro}
       set={{
         opacity: 0,
         scale: s,

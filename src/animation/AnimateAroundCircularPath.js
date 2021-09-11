@@ -1,21 +1,37 @@
-import React, { useRef } from "react"
+import React, { useContext, useRef } from "react"
 import { gsap } from "gsap"
 import { Flex, Box } from "theme-ui"
 import useIsomorphicLayoutEffect from "./useIsomorphicLayoutEffect"
 import { MotionPathPlugin } from "gsap/dist/MotionPathPlugin"
+import { TransitionContext } from "../context/TransitionContext"
 
 gsap.registerPlugin(MotionPathPlugin)
 
 const AnimateAroundCircularPath = ({ children, radius, duration }) => {
   const r = radius || 200
-  const d = duration || 20
+  const d = duration || 40
+  const { timeline } = useContext(TransitionContext)
+
+  const containerEl = useRef()
+
+  useIsomorphicLayoutEffect(() => {
+    timeline.add(
+      gsap.to(containerEl.current, {
+        opacity: 0,
+        duration: 0.01,
+      }),
+      0
+    )
+  })
 
   return (
-    <Box sx={{ position: "relative", width: "100%", height: "100%" }}>
+    <Box
+      ref={containerEl}
+      sx={{ position: "relative", width: "100%", height: "100%" }}
+    >
       {React.Children.map(children, (child, i) => {
         const el = useRef()
         useIsomorphicLayoutEffect(() => {
-          console.log("progress " + i / children.length)
           const tl = gsap
             .timeline({ repeat: -1, repeatDelay: 0, delay: 0 })
             .add(
@@ -57,4 +73,4 @@ const AnimateAroundCircularPath = ({ children, radius, duration }) => {
   )
 }
 
-export default AnimateAroundCircularPath
+export default React.memo(AnimateAroundCircularPath)

@@ -6,7 +6,14 @@ import GithubLink from "./GithubLink"
 const Nav = (props) => (
   <Box
     as="nav"
-    sx={{ display: "flex", flexWrap: "wrap", py: [2, 0], bg: "white" }}
+    sx={{
+      display: "flex",
+      flexWrap: "wrap",
+      py: [2, 0],
+      bg: "white",
+      position: "relative",
+      zIndex: 999999,
+    }}
   >
     <Box
       sx={{ width: ["100%", "50%"], pl: [0, 3], textAlign: ["center", "left"] }}

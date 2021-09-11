@@ -16,7 +16,13 @@ const One = () => (
     }}
   >
     <AnimateAroundCircularPath>
-      <ScaleInOut duration={3} ease="power4.out" scale={1.2} x={-180}>
+      <ScaleInOut
+        duration={3}
+        ease="power4.out"
+        scale={1.2}
+        x={-180}
+        skipOutro={true}
+      >
         <Text
           as="h3"
           sx={{
@@ -29,7 +35,13 @@ const One = () => (
           Server Rendered Web Pages
         </Text>
       </ScaleInOut>
-      <ScaleInOut duration={3} ease="power4.out" scale={1.2} x={180}>
+      <ScaleInOut
+        duration={3}
+        ease="power4.out"
+        scale={1.2}
+        x={180}
+        skipOutro={true}
+      >
         <Text
           as="h3"
           sx={{
