@@ -1,9 +1,9 @@
 import { gsap } from "gsap"
 import { useRef } from "react"
+import useIsomorphicLayoutEffect from "../animation/useIsomorphicLayoutEffect"
 import Link from "next/link"
 import { Box, Text, Image } from "theme-ui"
 import { Link as A } from "theme-ui"
-import useIsomorphicLayoutEffect from "../animation/useIsomorphicLayoutEffect"
 
 const NavHome = () => {
   const icon = useRef()

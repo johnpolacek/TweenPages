@@ -3,7 +3,7 @@ import NavHome from "./NavHome"
 import NavLink from "./NavLink"
 import GithubLink from "./GithubLink"
 
-const Nav = (props) => (
+const Nav = () => (
   <Box
     as="nav"
     sx={{
@@ -25,12 +25,21 @@ const Nav = (props) => (
         width: ["100%", "50%"],
         textAlign: ["center", "right"],
         pr: [0, 3],
+        overflow: "hidden",
       }}
     >
-      <NavLink href="/one">One</NavLink>
-      <NavLink href="/two">Two</NavLink>
-      <NavLink href="/three">Three</NavLink>
-      <NavLink href="/docs">Docs</NavLink>
+      <NavLink href="/one" delay={3}>
+        one
+      </NavLink>
+      <NavLink href="/two" delay={3.1}>
+        two
+      </NavLink>
+      <NavLink href="/three" delay={3.2}>
+        three
+      </NavLink>
+      <NavLink href="/docs" delay={3.3}>
+        docs
+      </NavLink>
     </Box>
   </Box>
 )

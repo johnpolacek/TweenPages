@@ -1,34 +1,44 @@
-import PropTypes from "prop-types"
+import { gsap } from "gsap"
+import { useRef } from "react"
+import useIsomorphicLayoutEffect from "../animation/useIsomorphicLayoutEffect"
 import Link from "next/link"
 import { Link as A } from "theme-ui"
 import { useRouter } from "next/router"
 
-const NavLink = (props) => {
+const NavLink = ({ children, href, delay }) => {
+  const el = useRef()
+
+  useIsomorphicLayoutEffect(() => {
+    gsap.set(el.current, { y: 20 })
+    gsap.to(el.current, {
+      y: 0,
+      opacity: 1,
+      duration: 1,
+      delay,
+      ease: "back.out",
+    })
+  }, [])
+
   const router = useRouter()
   return (
-    <Link href={props.href}>
+    <Link href={href}>
       <A
+        ref={el}
         sx={{
-          py: [2, 3],
-          px: 3,
-          fontSize: 3,
-          fontWeight: 200,
+          opacity: 0,
+          p: 3,
+          mt: 1,
+          fontSize: 2,
+          fontWeight: 600,
           display: "inline-block",
           textDecoration: "none",
-          borderBottom: "1px solid",
-          borderColor:
-            router.pathname === props.href && props.href !== "/"
-              ? "primary"
-              : "white",
+          color: router.pathname === href && href !== "/" ? "black" : "primary",
         }}
-        {...props}
-      />
+      >
+        {children}
+      </A>
     </Link>
   )
-}
-
-NavLink.propTypes = {
-  href: PropTypes.string.isRequired,
 }
 
 export default NavLink
