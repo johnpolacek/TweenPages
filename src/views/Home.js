@@ -8,7 +8,6 @@ import HomeAnimation from "../animation/HomeAnimation"
 
 const Home = () => (
   <Flex
-    id="home"
     sx={{
       p: [0, 4],
       flex: 1,

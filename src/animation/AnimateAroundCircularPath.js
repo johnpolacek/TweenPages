@@ -7,12 +7,34 @@ import { TransitionContext } from "../context/TransitionContext"
 
 gsap.registerPlugin(MotionPathPlugin)
 
-const AnimateAroundCircularPath = ({ children, radius, duration }) => {
-  const r = radius || 200
+const AnimateAroundCircularPath = ({ children, width, height, duration }) => {
+  const w = width || 200
+  const h = height || 200
   const d = duration || 40
   const { timeline } = useContext(TransitionContext)
 
   const containerEl = useRef()
+
+  const x0 = -w / 2
+  const x1 = 0
+  const x2 = w / 2
+  const y0 = -h / 2
+  const y1 = 0
+  const y2 = h / 2
+
+  const top = `${x1} ${y0}`
+  const middle = `${x1} ${y1}`
+  const bottom = `${x1} ${y2}`
+  const left = `${x0} ${y1}`
+  const right = `${x2} ${y1}`
+
+  const path =
+    `M ${left} ` +
+    `C ${left} ${x0} ${y0} ${top} ` +
+    `C ${top} ${x2} ${y0} ${right} ` +
+    `C ${right} ${x2} ${y2} ${bottom} ` +
+    `C ${bottom} ${x0} ${y2} ${left} ` +
+    `Z`
 
   useIsomorphicLayoutEffect(() => {
     timeline.add(
@@ -39,11 +61,7 @@ const AnimateAroundCircularPath = ({ children, radius, duration }) => {
                 el.current,
                 d,
                 {
-                  motionPath: {
-                    path: `M ${-r}, 0
-                 a ${r},${r} 0 1,0 ${r * 2},0
-                 a ${r},${r} 0 1,0 -${r * 2},0z`,
-                  },
+                  motionPath: { path },
                   repeat: -1,
                   ease: "none",
                 },
@@ -63,9 +81,7 @@ const AnimateAroundCircularPath = ({ children, radius, duration }) => {
               height: "100%",
             }}
           >
-            {React.cloneElement(child, {
-              style: { ...child.props.style },
-            })}
+            {React.cloneElement(child)}
           </Flex>
         )
       })}

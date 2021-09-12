@@ -14,10 +14,14 @@ const ScaleInOut = ({
   x,
   y,
   skipOutro,
+  scaleTo,
+  xTo,
+  yTo,
 }) => {
   const s = scale || 0.01
   const e = ease || "elastic.out"
   const d = duration || 1
+  const sTo = scaleTo || 1
 
   return (
     <AnimateInOut
@@ -40,10 +44,10 @@ const ScaleInOut = ({
       }}
       to={{
         opacity: 1,
-        scale: 1,
+        scale: sTo,
         ease: e,
-        x: 0,
-        y: 0,
+        x: xTo || 0,
+        y: yTo || 0,
       }}
     >
       {children}
