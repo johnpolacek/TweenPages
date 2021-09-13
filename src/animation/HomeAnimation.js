@@ -79,7 +79,7 @@ const HomeAnimation = () => {
         src="/img/greensock.svg"
         sx={{
           position: "absolute",
-          top: [0, 0, "-10%", "20%"],
+          top: [0, 0, "30%", "20%"],
           left: "5%",
           height: ["100%", "100%", "120%", "50%"],
           opacity: 0,
@@ -92,9 +92,9 @@ const HomeAnimation = () => {
           fontSize: [7, 8],
           fontWeight: 400,
           position: "absolute",
-          top: ["5%", "10%", "10%", "36.5%"],
+          top: ["5%", "10%", "100%", "36.5%"],
           transformOrigin: "50% 50%",
-          left: ["50%", "45%"],
+          left: ["50%", "45%", "70%", "45%"],
           opacity: 0,
           display: "block",
         }}
@@ -107,9 +107,9 @@ const HomeAnimation = () => {
         sx={{
           position: "absolute",
           opacity: 0,
-          top: ["33%", "10%", "5%", "35%"],
-          right: ["12%", "10%", "10%", "15%"],
-          height: ["50%", "50%", "60%", "20%"],
+          top: ["33%", "10%", "145%", "35%"],
+          right: ["12%", "10%", "5%", "15%"],
+          height: ["50%", "50%", "70%", "20%"],
           transform: "translate(0px, -100px)",
         }}
         ref={nextJsRef}

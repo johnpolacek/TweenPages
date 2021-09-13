@@ -17,7 +17,7 @@ const Home = () => (
   >
     <Flex
       sx={{
-        width: ["100%", "100%", "100%", "45%", "50%"],
+        width: ["100%", "100%", "50%"],
         py: [0, 4],
         px: 4,
         alignItems: "center",
@@ -51,7 +51,7 @@ const Home = () => (
             mx: "auto",
           }}
         >
-          <Box sx={{ mr: 3 }}>
+          <Box sx={{ mr: [0, 0, 0, 3] }}>
             <ScaleInOut as="div" delay={4}>
               <A
                 sx={{
@@ -128,7 +128,7 @@ const Home = () => (
         </Flex>
       </Box>
     </Flex>
-    <Box sx={{ width: ["100%", "100%", "100%", "55%", "50%"] }}>
+    <Box sx={{ width: ["100%", "100%", "50%"] }}>
       <HomeAnimation />
     </Box>
   </Flex>
