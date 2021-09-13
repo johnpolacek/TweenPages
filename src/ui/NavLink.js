@@ -33,6 +33,7 @@ const NavLink = ({ children, href, delay }) => {
           display: "inline-block",
           textDecoration: "none",
           color: router.pathname === href && href !== "/" ? "black" : "primary",
+          cursor: "pointer",
         }}
       >
         {children}

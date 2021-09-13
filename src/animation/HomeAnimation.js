@@ -89,12 +89,12 @@ const HomeAnimation = () => {
       />
       <Text
         sx={{
-          fontSize: 8,
-          fontWeight: 500,
+          fontSize: [7, 8],
+          fontWeight: 400,
           position: "absolute",
-          top: ["10%", "10%", "10%", "36.5%"],
+          top: ["5%", "10%", "10%", "36.5%"],
           transformOrigin: "50% 50%",
-          left: "45%",
+          left: ["50%", "45%"],
           opacity: 0,
           display: "block",
         }}
@@ -107,8 +107,8 @@ const HomeAnimation = () => {
         sx={{
           position: "absolute",
           opacity: 0,
-          top: ["10%", "10%", "5%", "35%"],
-          right: ["10%", "10%", "10%", "15%"],
+          top: ["33%", "10%", "5%", "35%"],
+          right: ["12%", "10%", "10%", "15%"],
           height: ["50%", "50%", "60%", "20%"],
           transform: "translate(0px, -100px)",
         }}

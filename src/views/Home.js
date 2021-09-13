@@ -21,11 +21,12 @@ const Home = () => (
         py: [0, 4],
         px: 4,
         alignItems: "center",
+        flexDirection: ["column", "row"],
       }}
     >
       <Box>
         <FadeInOutUp>
-          <Text as="h1" sx={{ fontSize: 9, fontWeight: 100, pb: 4 }}>
+          <Text as="h1" sx={{ fontSize: [7, 8, 9], fontWeight: 100, py: 4 }}>
             TweenPages
           </Text>
         </FadeInOutUp>
@@ -35,58 +36,88 @@ const Home = () => (
               aria-hidden="true"
               id="subhead"
               as="h2"
-              sx={{ fontSize: 4, fontWeight: 500, pb: [0, 0, 0, 5] }}
+              sx={{ fontSize: [2, 3, 4], fontWeight: 500, pb: [4, 5] }}
             >
               Build complex animated page transitions with GSAP and Next.js.
             </Text>
           </ImplodeExplodeInOut>
         </Box>
-        <Flex>
-          <ScaleInOut as="div" delay={4}>
-            <A
-              sx={{ textDecoration: "none" }}
-              href="https://github.com/johnpolacek/TweenPages"
-            >
-              <Button
+        <Flex
+          sx={{
+            flexDirection: ["column", "column", "column", "row"],
+            width: "100%",
+            mb: 3,
+            maxWidth: ["300px", "300px", "none"],
+            mx: "auto",
+          }}
+        >
+          <Box sx={{ mr: 3 }}>
+            <ScaleInOut as="div" delay={4}>
+              <A
                 sx={{
-                  display: "flex",
-                  alignItems: "center",
+                  textDecoration: "none",
+                  width: "100%",
                   mr: 4,
-                  fontSize: 3,
-                  fontWeight: 400,
-                  px: 4,
-                  py: 3,
-                  bg: "royalblue",
                 }}
+                href="https://github.com/johnpolacek/TweenPages"
               >
-                <Image
-                  width="40"
-                  height="40"
-                  sx={{ ml: -2, mr: 3, opacity: 0.8 }}
-                  src="/img/github-icon.svg"
-                />
-                View on Github
-              </Button>
-            </A>
-          </ScaleInOut>
-          <ScaleInOut as="div" delay={4.1}>
-            <Link href="/one" passHref={true}>
-              <A>
                 <Button
                   sx={{
                     display: "flex",
                     alignItems: "center",
-                    mr: 3,
-                    fontSize: 3,
+                    mr: ["auto", "auto", "auto", 0],
+                    ml: ["auto", "auto", "auto", 0],
+                    fontSize: [1, 2, 3],
                     fontWeight: 400,
                     px: 4,
                     py: 3,
+                    bg: "royalblue",
+                    width: "100%",
+                    maxWidth: "300px",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Image
+                    width="40"
+                    height="40"
+                    sx={{ ml: [-2, -3, -2], mr: [2, 3, 2], opacity: 0.75 }}
+                    src="/img/github-icon.svg"
+                  />
+                  View on Github
+                </Button>
+              </A>
+            </ScaleInOut>
+          </Box>
+          <ScaleInOut as="div" delay={4.1}>
+            <Link href="/one" passHref={true}>
+              <A
+                sx={{
+                  textDecoration: "none",
+                  width: "100%",
+                }}
+              >
+                <Button
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    ml: ["auto", "auto", "auto", 0],
+                    mr: ["auto", "auto", "auto", 0],
+                    mb: 3,
+                    fontSize: [1, 2, 3],
+                    fontWeight: 400,
+                    px: [3, 4],
+                    py: [2, 3],
+                    width: "100%",
+                    maxWidth: "300px",
+                    display: "flex",
+                    justifyContent: "center",
                   }}
                 >
                   <Image
                     width="38"
                     height="38"
-                    sx={{ ml: -2, mr: 2, opacity: 0.5 }}
+                    sx={{ ml: [-2, -3, -2], mr: [2, 3, 2], opacity: 0.5 }}
                     src="/img/double-right-black.svg"
                   />
                   Bring the Action
