@@ -90,7 +90,7 @@ const Home = () => (
             </ScaleInOut>
           </Box>
           <ScaleInOut as="div" delay={4.1}>
-            <Link href="/one" passHref={true}>
+            <Link href="/two" passHref={true}>
               <A
                 sx={{
                   textDecoration: "none",

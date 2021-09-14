@@ -28,7 +28,7 @@ const Nav = () => (
         overflow: "hidden",
       }}
     >
-      <NavLink href="/one" delay={3}>
+      <NavLink href="/" delay={3}>
         one
       </NavLink>
       <NavLink href="/two" delay={3.1}>
