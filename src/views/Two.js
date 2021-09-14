@@ -8,7 +8,7 @@ const Two = () => (
   <Flex
     id="two"
     sx={{
-      p: [0, 4, 5],
+      p: [4, 5],
       flex: 1,
       color: "white",
       flexWrap: "wrap",
@@ -16,7 +16,7 @@ const Two = () => (
       justifyContent: "center",
     }}
   >
-    <Box sx={{ width: "50%" }}>
+    <Box sx={{ width: ["100%", "100%", "50%"], pb: [4, 5, 0] }}>
       <FadeIn duration={0.5} y={1200} delay={0.5}>
         <Box
           as="h2"
@@ -82,7 +82,7 @@ const Two = () => (
         </Box>
       </FadeIn>
     </Box>
-    <Box sx={{ width: "50%", pr: 5 }}>
+    <Box sx={{ width: ["100%", "100%", "50%"], pr: 5 }}>
       <FadeInOut x={-20} delay={2}>
         <Text
           as="h2"
