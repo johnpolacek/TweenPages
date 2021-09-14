@@ -4,14 +4,14 @@ import useIsomorphicLayoutEffect from "./useIsomorphicLayoutEffect"
 import { TransitionContext } from "../context/TransitionContext"
 import AnimateInOut from "./AnimateInOut"
 
-const FadeInOutUp = ({ children, delay }) => (
+const FadeInOutUp = ({ children, delay, y, durationIn, durationOut }) => (
   <AnimateInOut
     as="div"
-    durationIn={2}
-    durationOut={0.25}
+    durationIn={durationIn || 2}
+    durationOut={durationOut || 0.25}
     delay={delay}
     from={{
-      transform: "translate(0px, 40px)",
+      transform: "translate(0px, " + (y || 40) + "px)",
       opacity: 0,
       duration: 0.25,
       ease: "power4.out",
@@ -20,7 +20,6 @@ const FadeInOutUp = ({ children, delay }) => (
       opacity: 1,
       y: 0,
       ease: "power4.out",
-      duration: 0.1,
       delay: 0.5,
     }}
   >

@@ -4,21 +4,20 @@ import { Box } from "theme-ui"
 import useIsomorphicLayoutEffect from "./useIsomorphicLayoutEffect"
 import AnimateInOut from "./AnimateInOut"
 
-const FadeInOutRight = ({ children, delay }) => (
+const FlyInOut = ({ children, delay, delayOut, down, x, y, as }) => (
   <AnimateInOut
-    as="div"
-    durationIn={2}
+    as={as || "div"}
+    durationIn={1.5}
     durationOut={0.25}
     delay={delay}
+    delayOut={delayOut || 0}
     from={{
-      transform: "translate(100px, 0px)",
-      opacity: 0,
-      duration: 0.25,
+      transform: "translate(" + (x || 0) + "px, " + (y || 0) + "px)",
       ease: "power4.out",
     }}
     to={{
-      opacity: 1,
       x: 0,
+      y: 0,
       ease: "power4.inOut",
     }}
   >
@@ -26,4 +25,4 @@ const FadeInOutRight = ({ children, delay }) => (
   </AnimateInOut>
 )
 
-export default FadeInOutRight
+export default FlyInOut

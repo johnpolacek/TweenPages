@@ -12,6 +12,7 @@ const AnimateInOut = ({
   durationIn,
   durationOut,
   delay,
+  delayOut,
   set,
   skipOutro,
 }) => {
@@ -34,6 +35,7 @@ const AnimateInOut = ({
       timeline.add(
         gsap.to(el.current, {
           ...from,
+          delay: delayOut || 0,
           duration: durationOut,
         }),
         0
