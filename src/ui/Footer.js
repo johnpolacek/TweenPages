@@ -1,4 +1,4 @@
-import { Box } from "theme-ui"
+import { Box, Link } from "theme-ui"
 
 const Footer = (props) => (
   <Box
@@ -10,15 +10,29 @@ const Footer = (props) => (
       fontSize: 1,
     }}
   >
-    <Box as="span" sx={{ mx: 3, display: "inline-block", pb: 3 }}>
-      Created by <a href="https://johnpolacek">John Polacek</a>
+    <Box as="span" sx={{ mx: 3, display: "inline-block", py: 3 }}>
+      Created by{" "}
+      <Link sx={{ color: "greenyellow" }} href="https://johnpolacek">
+        John Polacek
+      </Link>
     </Box>
-    <Box as="span" sx={{ mx: 3, display: "inline-block", pb: 3 }}>
+    <Box as="span" sx={{ mx: 3, display: "inline-block", py: 3 }}>
       Open sourced on{" "}
-      <a href="https://github.com/johnpolacek/TweenPages">Github</a>
+      <Link
+        sx={{ color: "greenyellow" }}
+        href="https://github.com/johnpolacek/TweenPages"
+      >
+        Github
+      </Link>
     </Box>
-    <Box as="span" sx={{ mx: 3, display: "inline-block", pb: 3 }}>
-      Follow <a href="https://twitter.com/johnpolacek">@johnpolacek</a>
+    <Box as="span" sx={{ mx: 3, display: "inline-block", py: 3 }}>
+      Follow{" "}
+      <Link
+        sx={{ color: "greenyellow" }}
+        href="https://twitter.com/johnpolacek"
+      >
+        @johnpolacek
+      </Link>
     </Box>
   </Box>
 )

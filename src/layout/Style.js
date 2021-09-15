@@ -182,6 +182,9 @@ const Style = (props) => (
     ul {
       margin-top: 0;
     }
+    li {
+      margin-bottom: 8px;
+    }
     select {
       padding: 8px;
     }
@@ -217,9 +220,11 @@ const Style = (props) => (
     a {
       color: ${theme.colors.primary};
     }
-
     #docs h2 {
       padding-top: 32px;
+    }
+    #docs a {
+      font-weight: 600;
     }
   `}</style>
 )

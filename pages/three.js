@@ -9,7 +9,7 @@ const Page3 = () => (
     twitter="johnpolacek"
     imageUrl="https://tweenpages.vercel.app/project-logo.png"
     imageAlt="TweenPages Logo"
-    background="linear-gradient(90deg,red,black)"
+    background="linear-gradient(90deg,green,black)"
   >
     <Three />
   </Wrapper>

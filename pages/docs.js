@@ -9,7 +9,7 @@ const DocsPage = () => (
     twitter="johnpolacek"
     imageUrl="https://tweenpages.vercel.app/project-logo.png"
     imageAlt="TweenPages Logo"
-    background="linear-gradient(90deg,#fafafa,#ddd)"
+    background="linear-gradient(90deg,#fff,#fff)"
   >
     <Docs />
   </Wrapper>

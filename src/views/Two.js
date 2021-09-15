@@ -1,14 +1,18 @@
 import Link from "next/link"
-import { Flex, Box, Text, Link as A } from "theme-ui"
+import { Flex, Box, Text, Button, Image, Link as A } from "theme-ui"
 import FadeIn from "../animation/FadeIn"
 import FadeInOut from "../animation/FadeInOut"
 import FlyInOut from "../animation/FlyInOut"
+import ScaleInOut from "../animation/ScaleInOut"
 
 const Two = () => (
   <Flex
     id="two"
     sx={{
-      p: [4, 5],
+      pt: 4,
+      mt: 3,
+      px: [4, 5],
+      pb: 5,
       flex: 1,
       color: "white",
       flexWrap: "wrap",
@@ -119,7 +123,7 @@ const Two = () => (
         </Text>
       </FadeInOut>
       <FadeInOut y={5} delay={2.75}>
-        <Box>
+        <Box sx={{ pb: 4 }}>
           <Text as="p" sx={{ fontWeight: 200, pb: 3 }}>
             The{" "}
             <A
@@ -142,6 +146,42 @@ const Two = () => (
           </Text>
         </Box>
       </FadeInOut>
+      <ScaleInOut as="div" delay={4.1} x={-320}>
+        <Link href="/three" passHref={true}>
+          <A
+            sx={{
+              textDecoration: "none",
+              width: "100%",
+            }}
+          >
+            <Button
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                ml: ["auto", "auto", "auto", 0],
+                mr: ["auto", "auto", "auto", 0],
+                mb: 3,
+                fontSize: [1, 2],
+                fontWeight: 400,
+                px: [2, 3],
+                py: [1, 2],
+                width: "100%",
+                maxWidth: "240px",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <Image
+                width="38"
+                height="38"
+                sx={{ ml: [-2, -3, -2], mr: [2, 3, 2], opacity: 0.5 }}
+                src="/img/double-right-black.svg"
+              />
+              More Action
+            </Button>
+          </A>
+        </Link>
+      </ScaleInOut>
     </Box>
   </Flex>
 )
