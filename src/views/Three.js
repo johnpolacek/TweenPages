@@ -46,14 +46,14 @@ const Three = () => (
       width: "100%",
     }}
   >
-    <GridTile>
+    <GridTile bg="#0D9494">
       <Image
         sx={{ opacity: 0.5 }}
         width="48"
         src="/img/icons/arrow_upward_24dp.svg"
       />
     </GridTile>
-    <GridTile>
+    <GridTile bg="#12C612">
       <Text
         as="p"
         sx={{
@@ -69,7 +69,7 @@ const Three = () => (
         Created by John Polacek
       </Text>
     </GridTile>
-    <GridTile>
+    <GridTile bg="#A1E715">
       <Text
         sx={{
           fontWeight: 900,
@@ -81,14 +81,14 @@ const Three = () => (
         from Chicago
       </Text>
     </GridTile>
-    <GridTile>
+    <GridTile bg="#3DCC3D">
       <Image
         sx={{ opacity: 0.5 }}
         width="48"
         src="/img/icons/auto_awesome_24dp.svg"
       />
     </GridTile>
-    <GridTile>
+    <GridTile bg="#2E9999">
       <Image sx={{ opacity: 0.5 }} width="48" src="/img/icons/code_24dp.svg" />
     </GridTile>
     <GridTile>
@@ -98,26 +98,26 @@ const Three = () => (
         src="/img/icons/emoji_events_24dp.svg"
       />
     </GridTile>
-    <GridTile>
+    <GridTile bg="#B6EE47">
       <Image
         sx={{ opacity: 0.5 }}
         width="48"
         src="/img/icons/lightbulb_24dp.svg"
       />
     </GridTile>
-    <GridTile>
+    <GridTile bg="#008500">
       <Image
         sx={{ opacity: 0.5 }}
         width="48"
         src="/img/icons/phone_android_24dp.svg"
       />
     </GridTile>
-    <GridTile>
+    <GridTile bg="#006464">
       <Text sx={{ display: ["none", "inline"] }}>follow </Text>
       <A
         sx={{
           fontWeight: 600,
-          fontSize: ["14px", 0],
+          fontSize: ["14px", 0, 1],
           color: "greenyellow",
           ml: 2,
         }}
@@ -126,48 +126,48 @@ const Three = () => (
         @johnpolacek
       </A>
     </GridTile>
-    <GridTile>
+    <GridTile bg="#679B00">
       <Image
         sx={{ opacity: 0.5 }}
         width="40"
         src="/img/icons/thumb_up_24dp.svg"
       />
     </GridTile>
-    <GridTile>
+    <GridTile bg="#00A200">
       <Image
         sx={{ opacity: 0.5 }}
         width="48"
         src="/img/icons/trending_up_24dp.svg"
       />
     </GridTile>
-    <GridTile>
+    <GridTile bg="#004A4A">
       <A
         sx={{
           mx: 2,
           fontWeight: 600,
-          fontSize: ["12px", 0, 1],
-          color: "greenyellow",
+          fontSize: ["12px", 0, 1, 3],
+          color: "white",
         }}
         href="https://johnpolacek.com"
       >
         johnpolacek.com
       </A>
     </GridTile>
-    <GridTile>
+    <GridTile bg="#7EBD00">
       <Image
         sx={{ opacity: 0.5 }}
         width="48"
         src="/img/icons/emoji_people_24dp.svg"
       />
     </GridTile>
-    <GridTile display={["none", "flex"]}>
+    <GridTile bg="#006300" display={["none", "flex"]}>
       <Image
         sx={{ opacity: 0.5 }}
         width="48"
         src="/img/icons/workspace_premium_24dp.svg"
       />
     </GridTile>
-    <GridTile>
+    <GridTile bg="#008500">
       <Link href="/docs" passHref={true}>
         <A
           sx={{
@@ -188,7 +188,7 @@ const Three = () => (
               width: ["100px", "120px", "160px"],
               display: "flex",
               justifyContent: "center",
-              background: "green",
+              background: "rgba(0,0,0,.25)",
               color: "white",
             }}
           >
@@ -203,7 +203,7 @@ const Three = () => (
         </A>
       </Link>
     </GridTile>
-    <GridTile>
+    <GridTile bg="#679B00">
       <Image sx={{ opacity: 0.5 }} width="48" src="/img/icons/grade_24dp.svg" />
     </GridTile>
     <GridTile>
@@ -213,13 +213,13 @@ const Three = () => (
         src="/img/icons/cloud_done_24dp.svg"
       />
     </GridTile>
-    <GridTile>
+    <GridTile bg="#12C612">
       <A
         sx={{
           mx: 2,
           fontSize: ["12px", 0, 1],
           fontWeight: 600,
-          color: "greenyellow",
+          color: "rgba(0,0,0,75)",
         }}
         href="https://github.com/johnpolacek"
       >
@@ -232,14 +232,14 @@ const Three = () => (
         </Text>
       </A>
     </GridTile>
-    <GridTile>
+    <GridTile bg="#0D9494">
       <Image
         sx={{ opacity: 0.5 }}
         width="48"
         src="/img/icons/computer_24dp.svg"
       />
     </GridTile>
-    <GridTile display={["none", "flex"]}>
+    <GridTile display={["none", "flex"]} bg="#3DCC3D">
       <Image sx={{ opacity: 0.5 }} width="48" src="/img/icons/bolt_24dp.svg" />
     </GridTile>
   </Box>
