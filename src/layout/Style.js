@@ -226,6 +226,14 @@ const Style = (props) => (
     #docs a {
       font-weight: 600;
     }
+    #docs ul > li {
+      padding-top: 16px;
+    }
+    #docs li li {
+      padding-top: 16px;
+      padding-bottom: 0;
+      font-size: 16px;
+    }
   `}</style>
 )
 
