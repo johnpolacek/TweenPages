@@ -1,5 +1,6 @@
 import { Flex, Box } from "theme-ui"
 import { MDXProvider } from "@mdx-js/react"
+import TOC from "../mdx/TOC.md"
 import MarkdownContent from "../../README.md"
 
 const Docs = (props) => (
@@ -20,8 +21,8 @@ const Docs = (props) => (
           px: [3],
         }}
       >
-        <Box as="ul">
-          <Box as="li">Overview</Box>
+        <Box id="toc" sx={{ fontSize: 2 }}>
+          <TOC />
         </Box>
       </Box>
       <Box sx={{ width: "75%", p: [4, 5] }}>

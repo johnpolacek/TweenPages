@@ -1,34 +1,54 @@
----
-
-*Work in progress!*
-
-TODO: https://tomekdev.com/posts/anchors-for-headings-in-mdx
-
-
----
-
 ## Overview
 
-### Animating Complex Next.js Page Transitions with GSAP
+### Why Next.js?
 
-One of the great promises of Next.js is that you get that awesome single page app experience while also keeping the performance and architectural benefits of serverside rendering and routing.
+One of the things that makes Next.js so great is that you get that awesome single page app experience while also keeping the performance and architectural benefits of serverside rendering and routing.
 
-There are some nice examples out there of rendering page layouts with a static header/nav/footer and a main content area that rehydrates with new content as the user navigates around the site. There are also some examples of a simple fade in and out transition of those page updates.
+There is an official [next-page-transitions example](https://github.com/vercel/next.js/tree/canary/examples/with-next-page-transitions) that demonstrates how to add a loading state when navigating to a page, wait for the page to load its content and animate in when it's ready.
 
-But what about something more complex? We could offer something more ambitious:
+What about something more ambitious and complex? We could offer something more ambitious:
 
 - Intro and outro animations defined at the component level
-- A higher order `TimelineProvider` component that manages the page transition and all the animations of its children
+- A higher order component that manages page transitions and the animations of nested child components
 - Re-usable, declarative animation componenents
 - No flash of unstyled content on initial page load
 
-Back in the old days, if you wanted to have complex, ambitious animations as part of a web experience, you would use Flash.
+### Why GSAP?
 
-We were building component-based single page applications (aka rich internet appliciations RIAs). Thanks to advancements in the web platform and open source projects like Next.js, we can build these today, but in an accessible, responsive, performant way.
+Back in the early days of the web, if you wanted to craft complex, ambitious animations as part of a web experience, you would use Flash. Thanks to advancements in the web platform and open source project, we can build these today, but in an accessible, responsive, performant way.
 
-Something that hasn’t changed over this time has been the Greensock Animation Platform, which was the best animation library in Flash and is today the most robust animation library for the web. Amazingly, the syntax has not changed much over time, despite so many enhancements getting added over the years.
+The Greensock Animation Platform was the best animation library in Flash and is today the most robust animation library for the web, benefiting from many years of enhancements and platform stability.
 
-One useful pattern from those times is component-level intro/outro animations, a concept that GSAP is very well suited for. Each component can have its own animation as it gets added to the view, then another animation when it leaves.
+A great place to get started with GSAP and React is to read [GSAP + React, First Steps & Handy Techniques](https://greensock.com/react) and [GSAP + React, Advanced Animation Techniques](https://greensock.com/react-advanced).
+
+## Intros and Outros
+
+### The Intro/Outro Pattern
+
+A useful pattern in building animations into applications is the concept of component-level intro/outro animations, something that GSAP is very well suited for. 
+
+Each component can have its own animation as it gets added to the view, an intro. Typically you would do this by defining styles for the starting values for an element, such as `opacity:0` for a fade in. Then setting another style for the ending value when you element comes to rest (e.g. `opacity:1`).
+
+Your components may be composed of multiple elements, with different values that get transitioned, perhaps flying in, rotating, scaling, etc.
+
+The outro is typically the intro animation in reverse, where you set a value that you want the element to transition to before it is removed from the view (e.g. `opacity:1`. 
+
+It is of course possible you may wish to mix and match these intro/outro animations, for example a fly in from the bottom of the view, then a static fade out for the exit.
+
+### The Flash of Unstyled Content
+
+You may have run across the term FOUC, which stands for Flash of Unstyled Content.
+
+This frequently happens when an element on a server-side rendered page displays for a brief moment while the JavaScript is loaded and then applies styling.
+
+For example, if you have a fade intro on your element, 
+
+
+
+
+
+
+
 
 Intro animations are pretty straightforward at the component level because we have `useEffect`. With SSR, to prevent the flash of unstyled content (FOUC) we need to make sure the initial styling state of the component is correct. For example, if we are fading in, the initial style of that component should be an opacity of zero.
 
@@ -47,36 +67,3 @@ To pull this off, we will make use of the following:
 What about page background colors? To transition from one background color to another, you would need to pass the previous page’s background to the new page so it can do the color transition. Also, transitioning between gradient backgrounds isn’t even supported in CSS Animations at this time, so we’ll rely on GSAP once again to pull this off.
 
 Here we can use add a background prop to our `Main` component and `useEffect` to animate the background color
-
---
-
-
-
---
-
-GSAP is the most stable, performant and flexible animation library around, so we’ll be using that. The best place to get started is to read [GSAP + React, First Steps & Handy Techniques](https://greensock.com/react) and [GSAP + React, Advanced Animation Techniques](https://greensock.com/react-advanced).
-
-
-----
-
-Free Isometric illustrations by Majo Puterka
-
-https://ui8.net/majo-puterka/products/free-isometric-illustrations-by-majo-puterka
-
-----
-
-https://dev.to/anxinyang/page-transition-effect-in-nextjs-9ch
-
-https://stackoverflow.com/questions/29977799/how-should-i-handle-a-leave-animation-in-componentwillunmount-in-react
-
-Add global delay at page level, then each of the individual components animate? Seems wrong
-
-A top-level timeline seems like the right thing. Create a ref in the parent component and push each timeline into it for use in a master timeline. 
-
-Create a `TimelineProvider`
-
-```
-const addAnimation = useCallback((animation, index) => {    
-  tl.add(animation, index * 0.1);
-}, [tl]);
-```
