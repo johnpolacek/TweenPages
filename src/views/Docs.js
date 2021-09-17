@@ -6,9 +6,9 @@ import MarkdownContent from "../../README.md"
 const Docs = (props) => (
   <MDXProvider>
     <Flex
-      id="docs"
       sx={{
         borderTop: "1px solid #eee",
+        borderBottom: "1px solid #eee",
         width: "100%",
         flexWrap: "wrap",
       }}
@@ -25,7 +25,15 @@ const Docs = (props) => (
           <TOC />
         </Box>
       </Box>
-      <Box sx={{ width: "75%", p: [4, 5] }}>
+      <Box
+        id="docs"
+        sx={{
+          width: "75%",
+          p: [4, 5],
+          maxHeight: "100vh",
+          overflow: "scroll",
+        }}
+      >
         <MarkdownContent />
       </Box>
     </Flex>

@@ -221,18 +221,29 @@ const Style = (props) => (
       color: ${theme.colors.primary};
     }
     #docs h2 {
-      padding-top: 32px;
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+    #docs h3 {
+      padding-top: 16px;
     }
     #docs a {
       font-weight: 600;
     }
-    #docs ul > li {
-      padding-top: 16px;
+    #toc ul {
+      margin: 0;
+      padding-left: 32px;
     }
-    #docs li li {
+    #toc ul > li {
+      padding-top: 16px;
+      list-style: none;
+    }
+    #toc li li {
       padding-top: 16px;
       padding-bottom: 0;
       font-size: 16px;
+      margin: 0;
+      list-style: disc;
     }
   `}</style>
 )

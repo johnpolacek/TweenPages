@@ -3,12 +3,12 @@
 	- Why GSAP?
 - Intros and Outros
 	- The Intro/Outro Pattern
-	- The Flash of Unstyled Content
-	- The AnimateInOut Wrapper Component
-	- Timeline Context
+	- Intro Animations in Next.JS
+	- Outro Animations in Next.JS
 - Page Transitions	
-	- Static Elements
-	- Page Navigation Transitions
+	- Transition Provider
+	- Transition Layout
+	- Component-Level Animation
 	
 
 

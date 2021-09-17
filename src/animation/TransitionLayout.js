@@ -11,6 +11,7 @@ export default function TransitionLayout({ children }) {
   useIsomorphicLayoutEffect(() => {
     if (children !== displayChildren) {
       if (timeline.duration() === 0) {
+        // there are no outro animations, so immediately transition
         setDisplayChildren(children)
       } else {
         timeline.play().then(() => {

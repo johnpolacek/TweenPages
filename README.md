@@ -2,7 +2,7 @@
 
 ### Why Next.js?
 
-One of the things that makes Next.js so great is that you get that awesome single page app experience while also keeping the performance and architectural benefits of serverside rendering and routing.
+One of the things that makes Next.js so great is that you can create a modern, slick single page app experience while keeping the performance and other benefits of classic server-side rendering and routing.
 
 There is an official [next-page-transitions example](https://github.com/vercel/next.js/tree/canary/examples/with-next-page-transitions) that demonstrates how to add a loading state when navigating to a page, wait for the page to load its content and animate in when it's ready.
 
@@ -35,35 +35,143 @@ The outro is typically the intro animation in reverse, where you set a value tha
 
 It is of course possible you may wish to mix and match these intro/outro animations, for example a fly in from the bottom of the view, then a static fade out for the exit.
 
-### The Flash of Unstyled Content
+### Intro Animations in Next.JS
 
-You may have run across the term FOUC, which stands for Flash of Unstyled Content.
+For an intro animations in React, you might typically reach for `useLayoutEffect`, but because Next.js does SSR, your console will fill up with warnings for every animated component you have on your page. To avoid this we can apply `useIsomorphicLayoutEffect` instead of `useEffect`. [Check it out on Github](https://github.com/streamich/react-use/blob/master/docs/useIsomorphicLayoutEffect.md).
 
-This frequently happens when an element on a server-side rendered page displays for a brief moment while the JavaScript is loaded and then applies styling.
+Additionally with SSR, to prevent the flash of unstyled content (FOUC). This frequently happens when an element on a server-side rendered page displays for a brief moment while the JavaScript is loaded and executed.
 
-For example, if you have a fade intro on your element, 
+For example, if you have a fade intro on your element, there will be a brief flash where it is displayed at full opacity, then it will disappear and fade in as intended.
 
+To avoid this, we need to make sure the initial styling state of the component is correct. For example, if we are fading in, the initial style of that component should be an opacity of zero.
 
+### Outro Animations in Next.JS
 
-
-
-
-
-
-Intro animations are pretty straightforward at the component level because we have `useEffect`. With SSR, to prevent the flash of unstyled content (FOUC) we need to make sure the initial styling state of the component is correct. For example, if we are fading in, the initial style of that component should be an opacity of zero.
-
-Exit animations is where it gets tricky. We need to intercept the page transition, and do whatever exit animations our child components need to do, then proceed to go to the next page, where our components will all animate in.
-
-From https://dev.to/anxinyang/page-transition-effect-in-nextjs-9ch
-
-In Next.js `_app.js` is the entry point to start rendering page. When you navigation to a different page, the page component is passed to `MyApp`. In order to make a page transition effect, we need to prevent rendering the new page before our outro animation is done.
+Outro animations are where it gets tricky. We need to intercept the page transition, and do whatever exit animations our child components need to do, then proceed to go to the next page, where our components will all animate in.
 
 To pull this off, we will make use of the following:
 
-- A `TransitionLayout` higher order component used as a wrapper in `MyApp`
-- A `TimelineProvider` component that will take advantage of React’s `useContext` hook to share an outro  timeline across multiple components, wherever they are nested in our app
-- An `AnimateInOut` helper component that will allow us to quickly build reusable intro/outro animation patterns in our app
+- A `TransitionLayout` higher order component used as a wrapper in `MyApp` that will delay the routing change until after any animations have completed.
+- A `TimelineProvider` component that will take advantage of React’s `useContext` hook to share an outro timeline across multiple components, wherever they are nested in our app
 
-What about page background colors? To transition from one background color to another, you would need to pass the previous page’s background to the new page so it can do the color transition. Also, transitioning between gradient backgrounds isn’t even supported in CSS Animations at this time, so we’ll rely on GSAP once again to pull this off.
+## Page Transitions
 
-Here we can use add a background prop to our `Main` component and `useEffect` to animate the background color
+In Next.js, we can add a custom App component to initialize pages. It is typical to use this to persist layouts between page changes (e.g. a header navigation bar).
+
+Additionally, we can use the Custom App component to manage our page transition animations. 
+
+### Transition Provider
+
+In order to make a page transition effect, we need to prevent rendering the new page before our outro animation is done. 
+
+We may have many components with different animation effects nested in our pages. To keep track of all the different outro transitions, we will use a combination of React’s Context API and a top-level GSAP timeline.
+
+In `TransitionContext` we will create our `TransitionProvider` which will make our GSAP timeline for outro animations available to any components who would like to transition out during a page change.
+
+```
+import React, { useState, createContext, useCallback } from "react"
+import gsap from "gsap"
+
+const TransitionContext = createContext({})
+
+const TransitionProvider = ({ children }) => {
+  const [timeline, setTimeline] = useState(() =>
+    gsap.timeline({ paused: true })
+  )
+
+  return (
+    <TransitionContext.Provider
+      value={{
+        timeline,
+        setTimeline,
+      }}
+    >
+      {children}
+    </TransitionContext.Provider>
+  )
+}
+
+export { TransitionContext, TransitionProvider }
+```
+
+What if you have pages with different background colors and you would like to transition smoothly from one to another? We can can add `background` as another property in addition to `timeline` in `TransitionContext`.
+
+## Transition Layout
+
+Next, we have `TransitionLayout` which will be our controller that will initiate the outro animations and update the page when they are all complete. It also contains a wrapper component for the background color page transition animation.
+
+```
+import { gsap } from "gsap"
+import { TransitionContext } from "../context/TransitionContext"
+import { useState, useContext, useRef } from "react"
+import useIsomorphicLayoutEffect from "../animation/useIsomorphicLayoutEffect"
+
+export default function TransitionLayout({ children }) {
+  const [displayChildren, setDisplayChildren] = useState(children)
+  const { timeline, background } = useContext(TransitionContext)
+  const el = useRef()
+
+  useIsomorphicLayoutEffect(() => {
+    if (children !== displayChildren) {
+      if (timeline.duration() === 0) {
+        // there are no outro animations, so immediately transition
+        setDisplayChildren(children)
+      } else {
+        timeline.play().then(() => {
+          // outro complete so reset to an empty paused timeline
+          timeline.seek(0).pause().clear()
+          setDisplayChildren(children)
+        })
+      }
+    }
+  }, [children])
+
+  useIsomorphicLayoutEffect(() => {
+    gsap.to(el.current, {
+      background,
+      duration: 1,
+    })
+  }, [background])
+
+  return <div ref={el}>{displayChildren}</div>
+}
+```
+
+### Custom App
+
+Let’s take a look at our Custom App component.
+
+```
+import { TransitionProvider } from "../src/context/TransitionContext"
+import TransitionLayout from "../src/animation/TransitionLayout"
+import { Box } from "theme-ui"
+import Header from "../src/ui/Header"
+import Footer from "../src/ui/Footer"
+
+export default function MyApp({ Component, pageProps }) {
+  return (
+    <TransitionProvider>
+      <TransitionLayout>
+        <Box
+          sx={{
+            display: "flex",
+            minHeight: "100vh",
+            flexDirection: "column",
+          }}
+        >
+          <Header />
+          <Component {...pageProps} />
+          <Footer />
+        </Box>
+      </TransitionLayout>
+    </TransitionProvider>
+  )
+}
+```
+
+Here we have `TransitionProvider` and `TransitionLayout` wrapping the other elements so that they can access our `TransitionContext` properties. We have a `Header` and `Footer` that exist outside of `Component` so that they will be static after the initial page load.
+
+### Component-Level Animation
+
+The extendable `AnimateInOut` helper component allows us to quickly build reusable intro/outro animation patterns in our app.
+
