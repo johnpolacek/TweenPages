@@ -15,9 +15,9 @@ const Docs = (props) => (
     >
       <Box
         sx={{
-          width: "25%",
+          width: ["100%", "100%", "33.33%", "25%"],
           borderRight: "1px solid #eee",
-          py: [4, 5],
+          py: [3, 4, 5],
           px: [3],
         }}
       >
@@ -28,8 +28,9 @@ const Docs = (props) => (
       <Box
         id="docs"
         sx={{
-          width: "75%",
-          p: [4, 5],
+          width: ["100%", "100%", "66.66%", "75%"],
+          px: 5,
+          py: [3, 4, 5],
           maxHeight: "100vh",
           overflow: "scroll",
         }}

@@ -230,6 +230,10 @@ const Style = (props) => (
     #docs a {
       font-weight: 600;
     }
+    #docs pre {
+      max-width: 100%;
+      overflow: scroll;
+    }
     #toc ul {
       margin: 0;
       padding-left: 32px;

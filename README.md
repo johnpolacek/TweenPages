@@ -173,5 +173,110 @@ Here we have `TransitionProvider` and `TransitionLayout` wrapping the other elem
 
 ### Component-Level Animation
 
-The extendable `AnimateInOut` helper component allows us to quickly build reusable intro/outro animation patterns in our app.
+Here is an example of a basic animation we can do at the component level. We can add as many of these as we want to a page and they will all do the same thing, wrap all its children in a transparent div and fade it in on page load, then fade out when navigating to a different page.
+
+```
+import { useRef, useContext } from "react"
+import { gsap } from "gsap"
+import { Box } from "theme-ui"
+import useIsomorphicLayoutEffect from "./useIsomorphicLayoutEffect"
+import { TransitionContext } from "../context/TransitionContext"
+
+const FadeInOut = ({ children }) => (
+  const { timeline } = useContext(TransitionContext)
+  const el = useRef()
+
+  // useIsomorphicLayoutEffect to avoid console warnings
+  useIsomorphicLayoutEffect(() => {
+    // intro animation will play immediately
+    gsap.to(el.current, {
+      opacity: 1,
+      duration: 1,
+    })
+
+    // add outro animation to top-level outro animation timeline
+    timeline.add(
+      gsap.to(el.current, {
+        opacity: 1,
+        duration: .5,
+      }),
+      0
+    )
+  }, [])
+
+  // set initial opacity to 0 to avoid FOUC for SSR
+  <Box ref={el} sx={{opacity: 0}}>
+    {children}
+  </Box>
+)
+
+export default FadeInOut
+```
+
+We can take this pattern and extract it into an extendable `AnimateInOut` helper component for reusable intro/outro animation patterns in our app.
+
+```
+import React, { useRef, useContext } from "react"
+import { gsap } from "gsap"
+import { Box } from "theme-ui"
+import useIsomorphicLayoutEffect from "./useIsomorphicLayoutEffect"
+import { TransitionContext } from "../context/TransitionContext"
+
+const AnimateInOut = ({
+  children,
+  as,
+  from,
+  to,
+  durationIn,
+  durationOut,
+  delay,
+  delayOut,
+  set,
+  skipOutro,
+}) => {
+  const { timeline } = useContext(TransitionContext)
+  const el = useRef()
+
+  useIsomorphicLayoutEffect(() => {
+    // intro animation
+    if (set) {
+      gsap.set(el.current, { ...set })
+    }
+    gsap.to(el.current, {
+      ...to,
+      delay: delay || 0,
+      duration: durationIn,
+    })
+
+    // outro animation
+    if (!skipOutro) {
+      timeline.add(
+        gsap.to(el.current, {
+          ...from,
+          delay: delayOut || 0,
+          duration: durationOut,
+        }),
+        0
+      )
+    }
+  }, [])
+
+  return (
+    <Box as={as} sx={from} ref={el}>
+      {children}
+    </Box>
+  )
+}
+
+export default React.memo(AnimateInOut)
+```
+
+The `AnimateInOut` component has built in flexibility for different scenarios:
+
+- Setting different animations, durations and delays for intros and outros
+- Skipping the outro
+- Setting the element tag for the wrapper, e.g. use a `<span>` instead of a `<div>`
+- Use GSAP’s `set` option to define initial values for the intro
+
+Using this we can create all sorts of reusable intro/outro animations, such as `<FlyInOut>`, `<ScaleInOut>`, `<RotateInOut3D>` and so forth.
 
