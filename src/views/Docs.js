@@ -2,9 +2,15 @@ import { Flex, Box } from "theme-ui"
 import { MDXProvider } from "@mdx-js/react"
 import TOC from "../mdx/TOC.md"
 import MarkdownContent from "../../README.md"
+import CodeBlock from "../ui/CodeBlock"
+
+const components = {
+  pre: (props) => <div {...props} />,
+  code: CodeBlock,
+}
 
 const Docs = (props) => (
-  <MDXProvider>
+  <MDXProvider components={components}>
     <Flex
       sx={{
         borderTop: "1px solid #eee",
