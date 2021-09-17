@@ -3,6 +3,8 @@ import { MDXProvider } from "@mdx-js/react"
 import TOC from "../mdx/TOC.md"
 import MarkdownContent from "../../README.md"
 import CodeBlock from "../ui/CodeBlock"
+import FlyInOut from "../animation/FlyInOut"
+import FadeInOutUp from "../animation/FadeInOutUp"
 
 const components = {
   pre: (props) => <div {...props} />,
@@ -22,14 +24,21 @@ const Docs = (props) => (
       <Box
         sx={{
           width: ["100%", "100%", "33.33%", "25%"],
-          borderRight: "1px solid #eee",
-          py: [3, 4, 5],
-          px: [3],
         }}
       >
-        <Box id="toc" sx={{ fontSize: 2 }}>
-          <TOC />
-        </Box>
+        <FlyInOut x={-400} delay={0.5} durationIn={2}>
+          <Box
+            id="toc"
+            sx={{
+              fontSize: 2,
+              borderRight: "1px solid #eee",
+              py: [3, 4, 5],
+              px: [3],
+            }}
+          >
+            <TOC />
+          </Box>
+        </FlyInOut>
       </Box>
       <Box
         id="docs"
@@ -41,7 +50,9 @@ const Docs = (props) => (
           overflow: "scroll",
         }}
       >
-        <MarkdownContent />
+        <FadeInOutUp delay={1.5}>
+          <MarkdownContent />
+        </FadeInOutUp>
       </Box>
     </Flex>
   </MDXProvider>
