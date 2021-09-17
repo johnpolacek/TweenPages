@@ -220,12 +220,10 @@ const Style = (props) => (
     a {
       color: ${theme.colors.primary};
     }
-    #docs h2 {
-      padding-top: 16px;
-      padding-bottom: 16px;
-    }
+    #docs h2,
     #docs h3 {
       padding-top: 16px;
+      padding-bottom: 8px;
     }
     #docs a {
       font-weight: 600;
@@ -233,6 +231,12 @@ const Style = (props) => (
     #docs pre {
       max-width: 100%;
       overflow: scroll;
+    }
+    #toc a {
+      text-decoration: none;
+    }
+    #toc li li a {
+      text-decoration: underline;
     }
     #toc ul {
       margin: 0;

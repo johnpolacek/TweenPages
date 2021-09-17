@@ -6,9 +6,21 @@ import CodeBlock from "../ui/CodeBlock"
 import FlyInOut from "../animation/FlyInOut"
 import FadeInOutUp from "../animation/FadeInOutUp"
 
+function getAnchor(text) {
+  console.log("getAnchor: " + text)
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9 ]/g, "")
+    .replace(/[ ]/g, "-")
+}
+
+const Heading = (props) => <Box id={getAnchor(props.children)} {...props} />
+
 const components = {
   pre: (props) => <div {...props} />,
   code: CodeBlock,
+  h2: (props) => <Heading as="h2" {...props} />,
+  h3: (props) => <Heading as="h3" {...props} />,
 }
 
 const Docs = (props) => (

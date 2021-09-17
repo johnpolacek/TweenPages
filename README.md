@@ -96,7 +96,7 @@ export { TransitionContext, TransitionProvider }
 
 What if you have pages with different background colors and you would like to transition smoothly from one to another? We can can add `background` as another property in addition to `timeline` in `TransitionContext`.
 
-## Transition Layout
+### Transition Layout
 
 Next, we have `TransitionLayout` which will be our controller that will initiate the outro animations and update the page when they are all complete. It also contains a wrapper component for the background color page transition animation.
 
