@@ -13,6 +13,7 @@ export default function MyApp({ Component, pageProps }) {
             display: "flex",
             minHeight: "100vh",
             flexDirection: "column",
+            overflow: "hidden",
           }}
         >
           <Header />
