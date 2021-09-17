@@ -7,6 +7,7 @@ const DocHead = (props) => (
       <title>{props.title}</title>
       <link rel="icon" type="image/x-icon" href="/favicon.ico" />
       <link rel="canonical" href={props.url} />
+      <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="description" content={props.description} />
       <meta property="og:title" content={props.title} />
       <meta property="og:description" content={props.description} />
