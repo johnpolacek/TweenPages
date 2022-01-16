@@ -3,26 +3,25 @@
   "description": "Build complex animated page transitions with GSAP and Next.js",
   "version": "0.1.0",
   "scripts": {
-    "cypress": "cypress open",
     "dev": "next",
     "build": "next build",
     "start": "next start",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "format-watch": "npm run format && onchange \"**/*.{js,jsx,json,md}\" -- prettier --write {{changed}}",
-    "test": "cypress run",
     "deploy": "npm run test && git push origin main && vercel --prod"
   },
   "dependencies": {
-    "@babel/runtime": "^7.15.3",
-    "@gsap/business": "^3.7.1",
+    "@babel/runtime": "^7.16.7",
+    "@gsap/business": "^3.9.1",
     "@mdx-js/loader": "^1.6.22",
-    "@next/mdx": "^11.1.2",
+    "@next/mdx": "^12.0.8",
     "gsap": "npm:@gsap/business@^3.7.1",
-    "next": "^11.1.2",
+    "next": "^12.0.8",
     "prism-react-renderer": "^1.2.1",
+    "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "theme-ui": "^0.11.2"
+    "theme-ui": "^0.13.1"
   },
   "devDependencies": {
     "onchange": "^7.1.0",
