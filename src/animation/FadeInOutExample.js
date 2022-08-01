@@ -19,7 +19,7 @@ const FadeInOut = ({ children }) => (
     // add outro animation to top-level outro animation timeline
     timeline.add(
       gsap.to(el.current, {
-        opacity: 1,
+        opacity: 0,
         duration: .5,
       }),
       0
